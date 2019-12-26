@@ -14,7 +14,7 @@ public class TestBase {
     @BeforeClass
     public void setUp() {
         wd = new ChromeDriver();
-        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
 
     }
@@ -56,5 +56,27 @@ public class TestBase {
 
     protected void pause(int millis) throws InterruptedException {
         Thread.sleep(millis);
+    }
+
+    public boolean isAvatarPresentOnHeader() {
+        return isElementPresent
+                (By.cssSelector("[data-test-id='header-member-menu-button']"));
+    }
+
+    public  boolean isElementPresent(By locator){
+        return wd.findElements(locator).size()>0;
+    }
+
+
+    public void click(By locator) {
+        wd.findElement(locator).click();
+    }
+
+    public void logout() throws InterruptedException {
+
+        click(By.cssSelector("[data-test-id='header-member-menu-button']"));
+
+        click(By.cssSelector("[data-test-id='header-member-menu-logout']"));
+    pause(15000);
     }
 }
