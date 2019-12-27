@@ -17,7 +17,6 @@ public class LoginTestHW extends TestBase{
 
     @Test
     public void testLoginHW() throws InterruptedException {
-        openSite("https://trello.com/ ");
 
         fillLoginForm();
         Assert.assertTrue
@@ -27,7 +26,7 @@ public class LoginTestHW extends TestBase{
 
     @Test
     public void testLoginHW1() throws InterruptedException {
-        openSite("https://trello.com/ ");
+
 
         fillLoginForm();
         Assert.assertTrue

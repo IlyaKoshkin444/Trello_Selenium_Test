@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -15,6 +16,7 @@ public class TestBase {
     public void setUp() {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        openSite("https://trello.com/ ");
 
 
     }
@@ -79,4 +81,47 @@ public class TestBase {
         click(By.cssSelector("[data-test-id='header-member-menu-logout']"));
     pause(15000);
     }
+
+
+
+    public void clickConfirmCreateBoardButton() throws InterruptedException {
+    click(By.cssSelector("[data-test-id='create-board-submit-button']"));
+    pause(5000);
+}
+
+    public void clickConfirmMakeBoardPublicButton() throws InterruptedException {
+    click(By.xpath("//button[@class='_3UeOvlU6B5KUnS _2MgouXHqRQDP_5 _3ZPeWh5QQj47DA']"));
+    pause(5000);
+}
+
+    public void clickCreateBoardPublic() throws InterruptedException {
+    click(By.xpath("//div[@id='layer-manager-popover']//li[2]//button[1]"));
+    pause(5000);
+}
+
+    public void selectCreateBoardFromDropDownPrivatePublic() throws InterruptedException {
+    click(By.xpath("//button[@class='_1Lkx3EjS3wCrs7']//span[@name='down']"));
+    pause(5000);
+}
+
+    public void selectCreateBoardFromDropDownNoteam() throws InterruptedException {
+    click(By.xpath("//button[@class='W6rMLOx8U0MrPx']//span[@name='down']"));
+    pause(5000);
+    click(By.xpath("//span[@class='_1uK2vQ_aMRS2NU']"));
+    pause(5000);
+}
+
+    public void inputCreateBoardTitle() {
+    Type(By.cssSelector("[data-test-id='create-board-title-input']"), "MyTestBoard");
+}
+
+    public void clickCreateBoardButton() throws InterruptedException {
+    click(By.cssSelector("[data-test-id='header-create-board-button']"));
+    pause(5000);
+}
+
+    public void clickPlusButton() throws InterruptedException {
+    click(By.cssSelector("[data-test-id='header-create-menu-button']"));
+    pause(5000);
+}
 }

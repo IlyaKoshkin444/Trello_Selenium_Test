@@ -7,7 +7,7 @@ public class LoginTest extends TestBase {
 
     @Test
     public void testLogin() throws InterruptedException {
-        openSite("https://trello.com/ ");
+
         //clicLogin
         clickLoginLink();
 
