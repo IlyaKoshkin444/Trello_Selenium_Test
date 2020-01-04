@@ -1,28 +1,38 @@
 package com.ilyakoshkin.trello;
 
+
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
  public class CreateBoardTest extends TestBase {
 
      @BeforeMethod
-
      public void ensurePreconditionsTestCreateBoard() throws InterruptedException {
-         if(!isAvatarPresentOnHeader()){
+         if (!isAvatarPresentOnHeader()) {
              fillLoginForm();
          }
-     }
-     @Test
-     public void testCreateBoard () throws InterruptedException {
 
-         clickPlusButton();
-         clickCreateBoardButton();
-         inputCreateBoardTitle();
-         selectCreateBoardFromDropDownNoteam();
-         selectCreateBoardFromDropDownPrivatePublic();
-         clickCreateBoardPublic();
-         clickConfirmMakeBoardPublicButton();
-         clickConfirmCreateBoardButton();
      }
+
+         @Test
+         public void testCreateBoard () throws InterruptedException {
+             int before = getBoardsCount();
+             clickPlusButton();
+             clickCreateBoardButton();
+             inputCreateBoardTitle();
+             selectCreateBoardFromDropDownNoteam();
+             selectCreateBoardFromDropDownPrivatePublic();
+             clickCreateBoardPublic();
+             clickConfirmMakeBoardPublicButton();
+             clickConfirmCreateBoardButton();
+             returnToHomePage();
+
+
+             int after = getBoardsCount();
+             Assert.assertEquals(after, before + 1);
+             System.out.println("Count Boards after create is: " + after);
+         }
+
 
  }
