@@ -13,18 +13,18 @@ public class LoginTest extends TestBase {
 
     }
     public void clickLoginLink() throws InterruptedException {
-        InitLogin();
-        Type(By.id("user"), "eliyahu.kosh44@gmail.com");
-        pause(10000);
-       if (wd.findElement(By.id("password")).isDisplayed()){
-           Type(By.id("password"), "trel23081967");
+        app.InitLogin();
+        app.Type(By.id("user"), "eliyahu.kosh44@gmail.com");
+        app.pause(10000);
+       if (app.isPassword()){
+           app.Type(By.id("password"), "trel23081967");
         }
-        clickLogin("login");
+        app.clickLogin("login");
         if (isElementPresent(By.id("login-submit"))){
-            clickLogin("login-submit");
-            Type(By.id("password"), "trel23081967");
-            clickLogin("login-submit");
-        pause(20000);
+            app.clickLogin("login-submit");
+            app.Type(By.id("password"), "trel23081967");
+            app.clickLogin("login-submit");
+        app.pause(20000);
 
          }
 
@@ -34,7 +34,7 @@ public class LoginTest extends TestBase {
     }
 
     public boolean isElementPresent(By locator){
-     return wd.findElements(locator).size()>0;
+     return ApplicationManager.wd.findElements(locator).size()>0;
     }
 
 

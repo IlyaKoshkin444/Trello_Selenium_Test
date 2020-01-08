@@ -9,26 +9,25 @@ public class DeleteBoardTest extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditionsTestDeleteBoard() throws InterruptedException {
-    if (!isAvatarPresentOnHeader()) {
-       fillLoginForm();
+    if (!app.isAvatarPresentOnHeader()) {
+       app.fillLoginForm();
         }
     }
 
     @Test
     public void testDeleteBoard() throws InterruptedException {
-        int before = getBoardsCount();
+        int before = app.getBoardsCount();
 
+        app.clickIconBoard();
+        app.clickBoardMenuBackButton();
+        app.clickBoardMenuOpenMore();
+        app.clickBoardMenuCloseBoard();
+        app.clickConfirmCloseBoard();
+        app.clickPermanentlyDeleteBoard();
+        app.clickConfirmPermanentlyDeleteBoard();
+        app.returnToHomePage();
 
-        clickIconBoard();
-        clickBoardMenuBackButton();
-        clickBoardMenuOpenMore();
-        clickBoardMenuCloseBoard();
-        clickConfirmCloseBoard();
-        clickPermanentlyDeleteBoard();
-        clickConfirmPermanentlyDeleteBoard();
-        returnToHomePage();
-
-        int after = getBoardsCount();
+        int after = app.getBoardsCount();
         Assert.assertEquals(after, before - 1);
         System.out.println("Count Boards after delete is: " + after);
     }

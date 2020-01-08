@@ -1,6 +1,5 @@
 package com.ilyakoshkin.trello;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -10,17 +9,17 @@ public class LoginTestHW extends TestBase{
     @BeforeMethod
 
     public void ensurePreconditions() throws InterruptedException {
-    if(isAvatarPresentOnHeader()){
-        logout();
+    if(app.isAvatarPresentOnHeader()){
+        app.logout();
     }
     }
 
     @Test
     public void testLoginHW() throws InterruptedException {
 
-        fillLoginForm();
+        app.fillLoginForm();
         Assert.assertTrue
-                (isAvatarPresentOnHeader());
+                (app.isAvatarPresentOnHeader());
 
     }
 
@@ -28,9 +27,9 @@ public class LoginTestHW extends TestBase{
     public void testLoginHW1() throws InterruptedException {
 
 
-        fillLoginForm();
+        app.fillLoginForm();
         Assert.assertTrue
-                (isAvatarPresentOnHeader());
+                (app.isAvatarPresentOnHeader());
 
     }
 
